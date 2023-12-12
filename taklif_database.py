@@ -10,7 +10,10 @@ mycursor = mydb.cursor()
 
 # Create database
 sql = "CREATE DATABASE IF NOT EXISTS SHOP"
-mycursor.execute(sql)
+try:
+    mycursor.execute(sql)
+except:
+    print("error")
 
 # Connect to the SHOP database
 mydb = mysql.connector.connect(
@@ -68,7 +71,7 @@ result = mycursor.fetchall()
 print(result)
 
 # Update Products table
-sql = "UPDATE Products SET price = 0.3 * price + price"
+sql = "UPDATE Products SET price = 0.3 * price "
 mycursor.execute(sql)
 mydb.commit()
 
